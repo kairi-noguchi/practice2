@@ -1,3 +1,4 @@
+
 from flask import Flask, render_templte, request
 
 app = Flask(__name__)
@@ -9,6 +10,16 @@ def top_page():
     if__name__=="__main__":
         app.run(debug=True)
 
+
+@app.route("/circle_input")
+def circle_input():
+    return render_templte("circle_input.html")
+
+@app.route("/circle_result")
+def circle_result():
+    radius = int(request.args.get("radius"))
+    result = 3.14 * radius ** 2 
+    return render_templte("circle_result.html", result=result)
 @app.route("/square_input")
 def square_input():
     return render_templte("square_input.html")
